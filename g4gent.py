@@ -1,6 +1,5 @@
 import os
 import dotenv
-dotenv.load_dotenv()
 
 def build_chatbot_mng_args(project_path:str):
     email = os.getenv('DEEPSEEK_EMAIL')
@@ -14,6 +13,7 @@ def build_chatbot_mng_args(project_path:str):
     )
 
 if __name__ == "__main__":
+    dotenv.load_dotenv()
     from src.Driver import Driver
     project_path = os.getcwd() + "/"
     dv = Driver(build_chatbot_mng_args(project_path))

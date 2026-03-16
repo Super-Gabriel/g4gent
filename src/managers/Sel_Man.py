@@ -196,7 +196,7 @@ class SelMan:
     def get_obj_by(self, type: str, value: str, seconds=60, wait=1):
         obj = None
         try:
-            #print(f'intentanto obtener {id}\n')
+            #print(f'intentanto obtener {value}\n')
             obj = WebDriverWait(self.dv, seconds).until(
                 EC.element_to_be_clickable((By.ID, value)) if type == 'id' else
                 EC.element_to_be_clickable((By.XPATH, value)) if type == 'xpath' else
