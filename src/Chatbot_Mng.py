@@ -1,5 +1,5 @@
 from .managers.Sel_Man import SelMan
-from .managers.Utils import Utils
+from .managers import Utils
 import random
 import time
 import os
@@ -9,16 +9,12 @@ class ChatbotMng:
         (
             self.project_path,
             self.prompt_txt_path,
-            self.edge_driver_path
+            self.edge_driver_path,
+            self.email,
+            self.password
         ) = args
-
-        self.email = os.getenv('DEEPSEEK_EMAIL')
-        self.password = os.getenv('DEEPSEEK_PASSWORD')
-
         self.mng = SelMan(self.edge_driver_path, type='edge')
-
         self.prompt = Utils.read_prompt(self.prompt_txt_path)
-
         self.bot_initializer()
 
     def bot_initializer(self):
