@@ -11,6 +11,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.edge.options import Options as eOptions
 from selenium.webdriver.chrome.options import Options as cOptions
 
+# para firefox
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
+
 
 class SelMan:
     def __init__(self, driver_path: str, type='edge', usr_data_dir="", profile_dir=""):
@@ -62,9 +66,15 @@ class SelMan:
                         "safebrowsing.enabled": True
                     })
                     self.dv = webdriver.Chrome(service=service, options=options)
-                    return
+                    retur
                 else:
                     self.dv = webdriver.Chrome(service=service)
+            elif type == 'firefox':
+                if not driver_path == "":
+                    service = FirefoxService(executable_path=driver_path)
+                else:
+                    service = FirefoxService(GeckoDriverManager().install())
+                self.dv = webdriver.Firefox(service=service)
         except Exception as e:
             print(f'error en __init__: {e}')
 

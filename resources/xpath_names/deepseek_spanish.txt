@@ -1,0 +1,7 @@
+email_input = "//input[@placeholder='Número de teléfono / dirección de correo']"
+password_input = "//input[@placeholder='Contraseña']"
+login_button = "//span[text()='Iniciar sesión']"
+smart_search_button = "//span[text()='Búsqueda inteligente']"
+deep_thinking_button = "//span[text()='Pensamiento Profundo']"
+prompt_input = "//textarea[@class='_27c9245 ds-scroll-area ds-scroll-area--show-on-focus-within d96f2d2a']"
+bot_msg = "//div[@class='_4f9bf79 d7dc56a8 _43c05b5']/div/div[@class='ds-markdown' and @style='--ds-md-zoom: 1.143;']"
