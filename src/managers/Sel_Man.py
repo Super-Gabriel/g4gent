@@ -96,7 +96,8 @@ class SelMan:
     # metodo para obtener texto de un elemento
     def get_text(self, type: str, value: str, seconds=60, wait=1):
         element = self.get_obj_by(type, value, seconds, wait)
-        texto = element.get_attribute("textContent")
+        texto = self.dv.execute_script("return arguments[0].innerText;", element)
+        #texto = element.get_attribute("textContent")
         return texto
     
     # metodo para escribir en un area de texto

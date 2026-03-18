@@ -30,3 +30,4 @@ def str_to_dict(string: str):
         return dict
     except Exception as e:
         print(f"error en str_to_dict: {e}")
+        return e

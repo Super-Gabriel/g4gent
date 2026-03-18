@@ -15,9 +15,6 @@ class ChatbotMng:
             self.password,
             self.xpath_names
         ) = args
-        print(self.xpath_names)
-        print(self.email)
-        print(self.password)
         self.mng = SelMan(driver_path=self.driver_path, type=self.driver_type)
         self.prompt = Utils.read_prompt(self.prompt_txt_path)
         self.bot_initializer()
@@ -35,9 +32,12 @@ class ChatbotMng:
         self.mng.get_text('xpath', self.xpath_names['bot_msg'])
 
     def bot_interaction(self, chat_msg: str) -> str:
+        if not chat_msg:
+            return
         self.mng.send_keys_to('xpath', self.xpath_names['prompt_input'], chat_msg, wait=random.randint(1,3), enter=True)
 
-        bot_msg = self.mng.get_text('xpath', self.xpath_names['bot_msg'])
+        print("\nEsperando respuesta ...")
+        bot_msg = self.mng.get_text('xpath', self.xpath_names['bot_msg'], seconds=600)
         
         return bot_msg
 
