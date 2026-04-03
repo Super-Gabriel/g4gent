@@ -6,7 +6,7 @@ import stat
 
 class file_tool:
     def __init__(self):
-        self.allowed_extensions = [".txt", ".py", ".json", ".md", ".csv", ".log", ".conf", ".ini", ".yaml", ".yml", ".html", ".css", ".js", ".xml"]
+        self.forbidden_extensions = []
         self.max_file_size = 10 * 1024 * 1024  # 10MB
         self.forbidden_paths = ["/etc/shadow", "/etc/passwd", "/root/", "/boot/", "/dev/", "/proc/", "/sys/"]
         
@@ -21,8 +21,8 @@ class file_tool:
     def _check_extension(self, file_path: str) -> tuple:
         """Verifica si la extensión del archivo está permitida"""
         ext = Path(file_path).suffix.lower()
-        if ext and ext not in self.allowed_extensions:
-            return (False, f"Extensión {ext} no permitida. Extensiones permitidas: {', '.join(self.allowed_extensions)}")
+        if ext and ext in self.forbidden_extensions:
+            return (False, f"Extensión {ext} no permitida. Extensiones prohibidas: {', '.join(self.forbidden_extensions)}")
         return (True, "")
     
     def create_file(self, file_path: str, content: str = "", force: bool = False) -> str:

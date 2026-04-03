@@ -30,6 +30,7 @@ class Driver:
         if ai_response['type'] == 0:
             print(f"\n\n{ai_response['response']}\n\n")
         elif ai_response['type'] == 1:
+            print(f"\n{ai_response['description']}")
             agent_tool = ai_response['agent_tool']
             function = ai_response['function']
             parameters = ai_response['parameters']

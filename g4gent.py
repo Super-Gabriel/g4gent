@@ -38,7 +38,7 @@ def build_chatbot_mng_args(project_path:str):
         f"" if driver_type == 'firefox' else
         ""
     )
-    prompt_txt_path = f"{project_path}/resources/initial_context_prompt.txt"
+    prompt_txt_path = f"{project_path}/resources/initial_prompt_2.txt"
     
     return (
         project_path,
